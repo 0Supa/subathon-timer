@@ -1,0 +1,118 @@
+:root {
+    --bgColor: #191919;
+    --inputColor: #292929;
+    --buttonColor: rgb(0, 80, 0);
+    --buttonColor2: rgb(0, 60, 0);
+    --accentColor: #E6E6E6;
+    --accentColor2: #223344;
+    --highlightColor: #da96ff;
+    --font: 'Karla', sans-serif;
+    --delay: .3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+    animation-fill-mode: forwards;
+    background: url('/socials/static/background.webp');
+    background-color: var(--bgColor);
+    display: block;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.title {
+    padding-bottom: 15px;
+    color: var(--accentColor);
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.25;
+    display: block;
+    font-family: var(--font);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.container {
+    width: 20rem;
+    margin: 0 auto;
+}
+
+input {
+    width: 2.5rem;
+    background: var(--inputColor);
+    border-radius: 6px;
+    border: none;
+    border: solid 1px rgba(144, 144, 144, 0.25);
+    color: var(--accentColor);
+    outline: 0;
+    padding: 5px;
+}
+
+input:disabled {
+    background-color: var(--accentColor2);
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button {
+    padding: 10px;
+    background: var(--buttonColor);
+    border-radius: 6px;
+    border: none;
+    border: solid 1px rgba(144, 144, 144, 0.25);
+    color: var(--accentColor);
+}
+
+button {
+    padding: 10px;
+    background: var(--buttonColor);
+    border-radius: 6px;
+    border: none;
+    border: solid 1px rgba(144, 144, 144, 0.25);
+    color: var(--accentColor);
+    -webkit-transition: all 0.25s linear;
+    -ms-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+
+button:hover {
+    background: var(--buttonColor2);
+    border-radius: 12px;
+}
+
+button:disabled {
+    background-color: var(--accentColor2);
+    border-radius: 0px;
+}
+
+.input-title {
+    color: var(--accentColor);
+    font-size: 1rem;
+    font-family: var(--font);
+    padding-left: 10px;
+}
+
+.input {
+    color: var(--accentColor);
+    border: solid var(--accentColor) 2px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.link-icon {
+    margin-right: 0.25ch;
+}
