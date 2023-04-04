@@ -28,11 +28,11 @@ client.on("USERNOTICE", async (msg) => {
     try {
         if (!subTypes.has(msg.messageTypeID)) return
 
-        const settings = JSON.parse(await redis.get("fsb:settings"))
+        const settings = JSON.parse(await redis.get("settings"))
         if (!settings) return
 
         const addedSeconds = settings.subs[`tier${msg.eventParams.subPlan / 1000 || '1'}`]
-        const ms = await redis.incrby("fsb:timer", addedSeconds * 1000)
+        const ms = await redis.incrby("timer", addedSeconds * 1000)
         updateTimer(ms, addedSeconds)
     } catch (e) {
         console.error(e)
@@ -43,11 +43,11 @@ client.on("PRIVMSG", async (msg) => {
     try {
         if (!msg.isCheer()) return
 
-        const settings = JSON.parse(await redis.get("fsb:settings"))
+        const settings = JSON.parse(await redis.get("settings"))
         if (!settings || settings.tips.bits.amount > msg.bits) return
 
         const addedSeconds = Math.floor(settings.tips.bits.time * (msg.bits / settings.tips.bits.amount))
-        const ms = await redis.incrby("fsb:timer", addedSeconds * 1000)
+        const ms = await redis.incrby("timer", addedSeconds * 1000)
         updateTimer(ms, addedSeconds)
     } catch (e) {
         console.error(e)
@@ -77,11 +77,11 @@ const handleEvent = async (event) => {
     try {
         if (event.type !== 'tip' || event.data.currency !== 'EUR') return
 
-        const settings = JSON.parse(await redis.get("fsb:settings"))
+        const settings = JSON.parse(await redis.get("settings"))
         if (!settings || settings.tips.se.amount > event.data.amount) return
 
         const addedSeconds = Math.floor(settings.tips.se.time * (event.data.amount / settings.tips.se.amount))
-        const ms = await redis.incrby("fsb:timer", addedSeconds * 1000)
+        const ms = await redis.incrby("timer", addedSeconds * 1000)
         updateTimer(ms, addedSeconds)
     } catch (e) {
         console.error(e)

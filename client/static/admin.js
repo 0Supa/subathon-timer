@@ -1,8 +1,9 @@
-import ky from 'https://unpkg.com/ky/distribution/index.js';
+import ky from 'https://cdn.jsdelivr.net/npm/ky@0.33.3/+esm'
 
 const logout = document.getElementById("logout")
 
 const setTimer = document.getElementById("setTimer")
+const pauseTimer = document.getElementById("pauseTimer")
 const timerHours = document.getElementById("timer-h")
 const timerMins = document.getElementById("timer-m")
 const timerSecs = document.getElementById("timer-s")
@@ -18,6 +19,8 @@ const tier3 = document.getElementById("sub3-time")
 
 const password = localStorage.getItem('password')
 if (!password) window.location.replace('index')
+
+let timerPaused = false
 
 const buttonMessage = (elm, message) => {
     const oldValue = elm.innerHTML
@@ -77,6 +80,24 @@ setTimer.addEventListener("click", async () => {
     if (data.success) buttonMessage(setTimer, 'Timer Updated')
     else buttonMessage(setTimer, 'An error occurred!')
 });
+
+pauseTimer.addEventListener("click", async () => {
+    pauseTimer.disabled = true
+
+    const data = await ky.post("api", {
+        throwHttpErrors: false,
+        json: {
+            query: "update:timer",
+            data: {
+                startPause: true
+            }
+        },
+        headers: { authorization: password }
+    }).json()
+
+    if (data.success) buttonMessage(pauseTimer, `Timer ${data.paused ? 'Paused' : 'Resumed'}`)
+    else buttonMessage(pauseTimer, 'An error occurred!')
+})
 
 saveSettings.addEventListener("click", async () => {
     saveSettings.disabled = true

@@ -1,4 +1,4 @@
-import ky from 'https://unpkg.com/ky/distribution/index.js';
+import ky from 'https://cdn.jsdelivr.net/npm/ky@0.33.3/+esm'
 const loginButton = document.getElementById("login")
 const passwordEl = document.getElementById("password")
 

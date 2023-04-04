@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Subathon</title>
-
     <script src="static/admin.js" type="module" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" />
     <link rel="stylesheet" href="static/style.css">
@@ -17,56 +16,37 @@
         <button id="logout" style="background-color: darkred;">Logout</button>
     </div>
     <div style="margin-top: 20px;"></div>
-    <div class="title">
-        Control
-    </div>
-
+    <div class="title"> Control </div>
     <div class="container">
         <div class="input-title">Set time manually</div>
         <div class="input">
-            <div class="input-wrapper">
-                Hours
-                <input id="timer-h" type="number" placeholder="5" min="0" max="999">
+            <div class="input-wrapper"> Hours <input id="timer-h" type="number" placeholder="5" min="0" max="999">
             </div>
-            <div class="input-wrapper">
-                Minutes
-                <input id="timer-m" type="number" placeholder="30" min="0" max="60">
+            <div class="input-wrapper"> Minutes <input id="timer-m" type="number" placeholder="30" min="0" max="60">
             </div>
-            <div class="input-wrapper">
-                Seconds
-                <input id="timer-s" type="number" placeholder="10" min="0" max="60">
+            <div class="input-wrapper"> Seconds <input id="timer-s" type="number" placeholder="10" min="0" max="60">
             </div>
         </div>
     </div>
-
     <div style="margin-top: 10px;"></div>
-
     <div style="text-align: center;">
-        <button id="setTimer">Set Timer</button>
+        <button id="setTimer">Update Time</button>
+        <button id="pauseTimer">Start/Pause Timer</button>
     </div>
-
     <div style="margin-top: 60px;"></div>
-
-    <div class="title">
-        Settings
-    </div>
-
+    <div class="title"> Settings </div>
     <div class="container">
         <div class="input-title">Tips & Bits</div>
         <div class="input" style="font-size: 1rem;">
             <div class="input-wrapper">
-                <input id="dono-time" type="number" placeholder="60"> seconds per
-                <input id="dono-am" type="number" placeholder="1" min="1"> Dollars (SE)
+                <input id="dono-time" type="number" placeholder="60"> seconds per <input id="dono-am" type="number" placeholder="1" min="1"> Dollars (SE)
             </div>
             <div class="input-wrapper">
-                <input id="bits-time" type="number" placeholder="60"> seconds per
-                <input id="bits-am" type="number" placeholder="100" min="1"> Bits
+                <input id="bits-time" type="number" placeholder="60"> seconds per <input id="bits-am" type="number" placeholder="100" min="1"> Bits
             </div>
         </div>
     </div>
-
     <div style="margin-top: 20px;"></div>
-
     <div class="container">
         <div class="input-title">Subs & Gifts</div>
         <div class="input" style="font-size: 1rem;">
@@ -81,9 +61,7 @@
             </div>
         </div>
     </div>
-
     <div style="margin-top: 10px;"></div>
-
     <div style="text-align: center;">
         <button id="saveSettings">Save Settings</button>
     </div>

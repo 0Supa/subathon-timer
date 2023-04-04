@@ -8,7 +8,7 @@ import rateLimit from 'express-rate-limit'
 import queries from './queries.js';
 import './events.js';
 
-export const redis = new Redis();
+export const redis = new Redis({ keyPrefix: 'fsb:' });
 
 const app = express();
 const httpServer = createServer(app);
@@ -53,12 +53,14 @@ app.post(`${config.urlPath}/api`, async (req, res) => {
 });
 
 io.on('connection', async (socket) => {
-    const ms = await redis.get('fsb:timer')
-    socket.emit('update time', { endTime: ms })
+    const ms = await redis.get('timer')
+    const delta = await redis.get('timer-delta')
+    socket.emit('update time', { endTime: ms, delta })
 });
 
-export const updateTimer = (endTime, addedTime) => {
-    io.emit('update time', { endTime, addedTime })
+export const updateTimer = async (endTime, addedTime) => {
+    const delta = await redis.get('timer-delta')
+    io.emit('update time', { endTime, addedTime, delta })
 }
 
 httpServer.listen(config.port, () => console.log(`listening on port ${config.port}`));

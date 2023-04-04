@@ -8,6 +8,7 @@ const widehardo = document.getElementById('widehardo')
 const addedTimeEl = document.getElementById('addedTime')
 
 let timeEnd;
+let timeDelta;
 
 function msToTime(duration) {
     var seconds = Math.floor((duration / 1000) % 60),
@@ -50,11 +51,20 @@ socket.on('update time', (data) => {
     }
 
     timeEnd = data.endTime
+    timeDelta = data.delta || null
 })
 
 setInterval(() => {
     if (timeEnd === undefined) return
-    const ms = timeEnd - Date.now()
+
+    let curr = Date.now()
+    if (timeDelta) {
+        timer.style.color = '#ff675c'
+        curr = timeDelta
+    } else
+        timer.style.color = '#ffffff'
+
+    const ms = timeEnd - curr
     if (ms < 1000) return timer.innerHTML = '00:00:00<img src="static/fizzySleep.png">'
     timer.innerHTML = msToTime(ms)
 }, 1000);
