@@ -20,8 +20,6 @@ const tier3 = document.getElementById("sub3-time")
 const password = localStorage.getItem('password')
 if (!password) window.location.replace('index')
 
-let timerPaused = false
-
 const buttonMessage = (elm, message) => {
     const oldValue = elm.innerHTML
     elm.disabled = true

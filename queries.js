@@ -42,7 +42,6 @@ export default {
     },
     "get:settings": async () => {
         const settings = JSON.parse(await redis.get('settings'))
-        const delta = await redis.get('timer-delta')
-        return { success: true, data: { ...settings, delta } }
+        return { success: true, data: { settings } }
     }
 }
