@@ -42,6 +42,6 @@ export default {
     },
     "get:settings": async () => {
         const settings = JSON.parse(await redis.get('settings'))
-        return { success: true, data: { settings } }
+        return { success: true, data: settings }
     }
 }
